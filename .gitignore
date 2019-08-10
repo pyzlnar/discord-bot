@@ -24,3 +24,6 @@ bot-*.tar
 
 # Ignore README artifacts
 README.html
+
+# Ignore secrets
+secrets.yml
