@@ -1,21 +1,26 @@
-# Bot
+// Asciidoctor Source
+// Pyzlnar Back README
+//
+// Original author:
+// - Pyzlnar
+//
+// Notes:
+//  Compile with: $ asciidoctor README.adoc
 
-**TODO: Add description**
+= Discord Bot
+[Experimental Discord bot]
+:toc:
+:showtitle:
 
-## Installation
+== Introduction
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `bot` to your list of dependencies in `mix.exs`:
+A small experimental discord bot and practice to learn Elixir
 
-```elixir
-def deps do
-  [
-    {:bot, "~> 0.1.0"}
-  ]
-end
-```
+== Installation
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/bot](https://hexdocs.pm/bot).
+TBD
 
+== License
+
+Discord bot is released under the
+https://opensource.org/licenses/MIT[MIT License].
