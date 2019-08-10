@@ -26,4 +26,4 @@ bot-*.tar
 README.html
 
 # Ignore secrets
-secrets.yml
+secrets.exs
