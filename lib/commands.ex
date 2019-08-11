@@ -7,7 +7,7 @@ defmodule Rem.Commands do
   end
 
   Cogs.def help do
-    prefix = Rem.Config.get!(:prefix)
+    prefix = Rem.get_config(:prefix)
     Cogs.say """
     Im at your service `WIP: Currently under development!`
     **Orders**:
