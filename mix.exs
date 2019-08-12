@@ -23,6 +23,7 @@ defmodule Bot.MixProject do
   defp deps do
     [
       {:alchemy, "~> 0.6.4", hex: :discord_alchemy},
+      {:yaml_elixir, "~> 2.4"}
     ]
   end
 end

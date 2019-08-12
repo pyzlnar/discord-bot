@@ -1,0 +1,19 @@
+_defaults:
+  server:  Poinsts
+  channel: points
+
+standup_core:
+  message: |
+    **Standup!** <@&530425120502710292>
+    :standup_core_url
+
+standup_wizards:
+  message: |
+    **Standup!** <@&530424799319687179>
+    :standup_wizards_url
+
+timesheets:
+  message: |
+    **Fill in your timesheets** @everyone**!**
+    :timesheets_url
+
