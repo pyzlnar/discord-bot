@@ -16,6 +16,7 @@ defmodule Rem.Commands do
     #{prefix}hi     I'll say hi
     #{prefix}ping   I'll ping you back if I'm still alive
     #{prefix}repeat I'll repeat what you said
+    #{prefix}repo   I'll give you the link to my repository
     #{prefix}thanks No need to thank me...
     ```
     """
@@ -32,6 +33,10 @@ defmodule Rem.Commands do
   Cogs.set_parser(:repeat, &List.wrap/1)
   Cogs.def repeat(rest) do
     Cogs.say(rest)
+  end
+
+  Cogs.def repo do
+    Cogs.say "https://github.com/pyzlnar/discord-bot"
   end
 
   # TODO Learn scopes
