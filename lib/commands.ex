@@ -9,7 +9,7 @@ defmodule Rem.Commands do
   Cogs.def help do
     prefix = Rem.get_config(:prefix)
     Cogs.say """
-    Im at your service `WIP: Currently under development!`
+    I'm at your service `WIP: Currently under development!`
     **Orders**:
     ```
     #{prefix}help   I'll respond with this message
