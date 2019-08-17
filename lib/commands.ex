@@ -1,8 +1,13 @@
 defmodule Rem.Commands do
+  alias Alchemy.{Message, User}
   use Alchemy.Cogs
 
+  @moduledoc """
+  Contains the definitions for Rem commands
+  """
+
   Cogs.def hi do
-    username = get_username(Cogs.member())
+    %Message{author: %User{username: username}} = message
     Cogs.say "Hello, #{username}!"
   end
 
@@ -15,8 +20,8 @@ defmodule Rem.Commands do
     #{prefix}help   I'll respond with this message
     #{prefix}hi     I'll say hi
     #{prefix}ping   I'll ping you back if I'm still alive
-    #{prefix}repeat I'll repeat what you said
     #{prefix}repo   I'll give you the link to my repository
+    #{prefix}say    I'll repeat what you said
     #{prefix}thanks No need to thank me...
     ```
     """
@@ -26,25 +31,16 @@ defmodule Rem.Commands do
     Cogs.say "Still alive!"
   end
 
-  Cogs.def thanks do
-    Cogs.say "It is my pleasure."
-  end
-
-  Cogs.set_parser(:repeat, &List.wrap/1)
-  Cogs.def repeat(rest) do
-    Cogs.say(rest)
-  end
-
   Cogs.def repo do
     Cogs.say "https://github.com/pyzlnar/discord-bot"
   end
 
-  # TODO Learn scopes
-  # Can't use Cogs here directly
-  def get_username(response) do
-    case response do
-      { :ok, member } -> member.user.username
-      _else           -> "INCOGNITO"
-    end
+  Cogs.set_parser(:say, &List.wrap/1)
+  Cogs.def say(rest) do
+    Cogs.say(rest)
+  end
+
+  Cogs.def thanks do
+    Cogs.say "It is my pleasure."
   end
 end

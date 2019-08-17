@@ -2,11 +2,17 @@ defmodule Mix.Tasks.Remind do
   use Mix.Task
 
   @shortdoc "Says something in a channel"
+  @moduledoc """
+  This task is able to send predefined to a specific server and channel
+  The idea is to pair them with a cronjob.
+
+  TODO: Use some sort of i18n mix to improve the interpolation
+  """
 
   def run([reminder]) do
     Application.ensure_all_started(:rem)
 
-    { guild_name, channel_name, message } =
+    {guild_name, channel_name, message} =
       get_reminders()
       |> find_reminder(reminder)
 
@@ -19,7 +25,7 @@ defmodule Mix.Tasks.Remind do
 
   defp get_reminders do
     case YamlElixir.read_from_file(Path.join(File.cwd!(), "config/reminders.yml")) do
-      { :ok, reminders } -> reminders
+      {:ok, reminders} -> reminders
       _else              -> raise "Reminders file not found. Are you running in the project root?"
     end
   end
@@ -28,21 +34,21 @@ defmodule Mix.Tasks.Remind do
   defp find_reminder(reminders, reminder) do
     default = Map.get(reminders, "_defaults") || %{}
     current = Map.get(reminders, reminder)    || %{}
-    %{ "server" => guild_name, "channel" => channel_name, "message" => message } = Map.merge(default, current)
+    %{"server" => guild_name, "channel" => channel_name, "message" => message} = Map.merge(default, current)
 
     # This is not super efficient as it tries to replace for all your replacements
     # Im tired, I just wanted this one done... Ill fix when I do tests
     message =
       Rem.get_config(:reminders)
-      |> Enum.reduce(message, fn { regex, replacement }, s -> String.replace(s, regex, replacement) end)
+      |> Enum.reduce(message, fn {regex, replacement}, s -> String.replace(s, regex, replacement) end)
 
-    { guild_name, channel_name, message }
+    {guild_name, channel_name, message}
   end
 
   defp find_guilds do
     case Alchemy.Client.get_current_guilds do
-      { :ok, guilds } -> guilds
-      _else           -> raise "Guilds not found"
+      {:ok, guilds} -> guilds
+      _else         -> raise "Guilds not found"
     end
   end
 
@@ -55,8 +61,8 @@ defmodule Mix.Tasks.Remind do
 
   defp find_channels(guild_id) do
     case Alchemy.Client.get_channels(guild_id) do
-      { :ok, channels } -> channels
-      _else             -> raise "Channels not found"
+      {:ok, channels} -> channels
+      _else           -> raise "Channels not found"
     end
   end
 
