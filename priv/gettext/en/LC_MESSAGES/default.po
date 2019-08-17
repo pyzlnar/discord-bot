@@ -1,0 +1,25 @@
+msgid "orders.hi"
+msgstr "Hello, %{username}!"
+
+msgid "orders.ping"
+msgstr "Still alive!"
+
+msgid "orders.help"
+msgstr ""
+"I'm at your service `WIP: Currently under development!`\n"
+"**Orders**:\n"
+"```\n"
+"%{prefix}help   I'll respond with this message\n"
+"%{prefix}hi     I'll say hi\n"
+"%{prefix}ping   I'll ping you back if I'm still alive\n"
+"%{prefix}repo   I'll give you the link to my repository\n"
+"%{prefix}say    I'll repeat what you said\n"
+"%{prefix}thanks No need to thank me...\n"
+"```\n"
+""
+
+msgid "orders.repo"
+msgstr "https://github.com/pyzlnar/discord-bot"
+
+msgid "orders.thanks"
+msgstr "It is my pleasure."

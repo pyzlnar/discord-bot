@@ -3,12 +3,13 @@ defmodule Bot.MixProject do
 
   def project do
     [
+      aliases:         aliases(),
       app:             :rem,
-      version:         "0.1.0",
+      compilers:       compilers(),
+      deps:            deps(),
       elixir:          "~> 1.9",
       start_permanent: Mix.env() == :prod,
-      deps:            deps(),
-      aliases:         aliases()
+      version:         "0.1.0",
     ]
   end
 
@@ -26,13 +27,18 @@ defmodule Bot.MixProject do
     ]
   end
 
+  defp compilers do
+    [:gettext] ++ Mix.compilers()
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      { :alchemy,     "~> 0.6.4", hex:  :discord_alchemy     },
-      { :credo,       "~> 1.0.0", only: :dev, runtime: false },
-      { :mimic,       "1.0.0",    only: :test                },
-      { :yaml_elixir, "~> 2.4"                               }
+      {:alchemy,     "~> 0.6.4", hex:  :discord_alchemy    },
+      {:credo,       "~> 1.0.0", only: :dev, runtime: false},
+      {:gettext,     ">= 0.0.0"                            },
+      {:mimic,       "1.0.0",    only: :test               },
+      {:yaml_elixir, "~> 2.4"                              }
     ]
   end
 end

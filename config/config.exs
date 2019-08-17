@@ -1,5 +1,7 @@
 import Config
 
+config :gettext, :default_locale, "en"
+
 config :porcelain,
   driver: Porcelain.Driver.Basic
 
