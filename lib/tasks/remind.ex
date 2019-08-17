@@ -5,8 +5,6 @@ defmodule Mix.Tasks.Remind do
   @moduledoc """
   This task is able to send predefined to a specific server and channel
   The idea is to pair them with a cronjob.
-
-  TODO: Use some sort of i18n mix to improve the interpolation
   """
 
   def run([reminder]) do
@@ -30,17 +28,12 @@ defmodule Mix.Tasks.Remind do
     end
   end
 
-  # TODO See if you can improve
   defp find_reminder(reminders, reminder) do
     default = Map.get(reminders, "_defaults") || %{}
     current = Map.get(reminders, reminder)    || %{}
-    %{"server" => guild_name, "channel" => channel_name, "message" => message} = Map.merge(default, current)
+    %{"server" => guild_name, "channel" => channel_name, "message_id" => message_id} = Map.merge(default, current)
 
-    # This is not super efficient as it tries to replace for all your replacements
-    # Im tired, I just wanted this one done... Ill fix when I do tests
-    message =
-      Rem.get_config(:reminders)
-      |> Enum.reduce(message, fn {regex, replacement}, s -> String.replace(s, regex, replacement) end)
+    message = Gettext.gettext(Rem.Gettext, message_id, Rem.get_config(:reminders))
 
     {guild_name, channel_name, message}
   end

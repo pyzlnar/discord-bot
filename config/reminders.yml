@@ -3,17 +3,11 @@ _defaults:
   channel: points
 
 standup_core:
-  message: |
-    **Standup!** <@&530425120502710292>
-    :standup_core_url
+  message_id: reminders.standup_core
 
 standup_wizards:
-  message: |
-    **Standup!** <@&530424799319687179>
-    :standup_wizards_url
+  message_id: reminders.standup_wizards
 
 timesheets:
-  message: |
-    **Fill in your timesheets** @everyone**!**
-    :timesheets_url
+  message_id: reminders.timesheets
 

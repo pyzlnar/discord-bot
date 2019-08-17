@@ -1,11 +1,9 @@
 defmodule Rem.Commands do
+  @moduledoc "Contains the definitions for Rem commands"
   alias Alchemy.{Message, User}
   use Alchemy.Cogs
   import Rem.Gettext
 
-  @moduledoc """
-  Contains the definitions for Rem commands
-  """
 
   Cogs.def hi do
     %Message{author: %User{username: username}} = message

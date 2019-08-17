@@ -15,11 +15,25 @@ msgstr ""
 "%{prefix}repo   I'll give you the link to my repository\n"
 "%{prefix}say    I'll repeat what you said\n"
 "%{prefix}thanks No need to thank me...\n"
-"```\n"
-""
+"```"
 
 msgid "orders.repo"
 msgstr "https://github.com/pyzlnar/discord-bot"
 
 msgid "orders.thanks"
 msgstr "It is my pleasure."
+
+msgid "reminders.standup_core"
+msgstr ""
+"**Standup!** <@&530425120502710292>\n"
+"%{standup_core_url}"
+
+msgid "reminders.standup_wizards"
+msgstr ""
+"**Standup!** <@&530424799319687179>\n"
+"%{standup_wizards_url}"
+
+msgid "reminders.timesheets"
+msgstr ""
+"**Fill in your timesheets** @everyone**!**\n"
+"%{timesheets_url}"

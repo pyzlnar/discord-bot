@@ -1,10 +1,7 @@
 defmodule Rem do
+  @moduledoc "Top level module that starts the Rem bot."
   use Application
   alias Alchemy.Client
-
-  @moduledoc """
-  This is the top level module that starts the Rem bot.
-  """
 
   def start(_type, _args) do
     run = Client.start(Rem.get_config(:token))
