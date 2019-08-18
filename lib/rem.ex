@@ -13,6 +13,6 @@ defmodule Rem do
 
   def load_commands do
     Alchemy.Cogs.set_prefix(Rem.get_config(:prefix))
-    use Rem.Commands
+    use Rem.Cogs
   end
 end

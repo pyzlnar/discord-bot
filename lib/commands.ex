@@ -1,34 +1,35 @@
 defmodule Rem.Commands do
-  @moduledoc "Contains the definitions for Rem commands"
-  alias Alchemy.{Message, User}
-  use Alchemy.Cogs
+  @moduledoc "Contains the body of Rem's orders"
+  alias Alchemy.{Client, Message, User}
   import Rem.Gettext
 
-
-  Cogs.def hi do
+  def hi(message) do
     %Message{author: %User{username: username}} = message
-    Cogs.say gettext("orders.hi", username: username)
+    reply message, gettext("orders.hi", username: username)
   end
 
-  Cogs.def help do
-    Cogs.say gettext("orders.help", prefix: Rem.get_config(:prefix))
+  def help(message) do
+    reply message, gettext("orders.help", prefix: Rem.get_config(:prefix))
   end
 
-  Cogs.def ping do
-    Cogs.say gettext("orders.ping")
+  def ping(message) do
+    reply message, gettext("orders.ping")
   end
 
-  Cogs.def repo do
-    Cogs.say gettext("orders.repo")
+  def repo(message) do
+    reply message, gettext("orders.repo")
   end
 
-  Cogs.set_parser(:say, &List.wrap/1)
-  Cogs.def say(rest) do
-    %Alchemy.Message{author: %Alchemy.User{bot: bot}} = message
-    unless bot, do: Cogs.say(rest)
+  def say(message, text) do
+    %Message{author: %User{bot: bot}} = message
+    unless bot, do: reply(message, text)
   end
 
-  Cogs.def thanks do
-    Cogs.say gettext("orders.thanks")
+  def thanks(message) do
+    reply message, gettext("orders.thanks")
+  end
+
+  defp reply(%Message{channel_id: channel_id}, body) do
+    Client.send_message(channel_id, body)
   end
 end
